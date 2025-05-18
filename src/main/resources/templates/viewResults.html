@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Results</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+</head>
+<body>
+    <h2>Your Results</h2>
+    <table border="1">
+        <tr>
+            <th>Student Name</th>
+            <th>Subject</th>
+            <th>Marks</th>
+        </tr>
+        <tbody th:each="student : ${students}">
+            <tr th:each="subject, iterStat : ${student.subjects}">
+                <!-- Display student name only in the first row with rowspan -->
+                <td th:if="${iterStat.first}" th:text="${student.name}" th:rowspan="${student.subjects.size()}"></td>
+                <!-- Subject and Marks for each row -->
+                <td th:text="${subject.name}"></td>
+                <td th:text="${subject.marks}"></td>
+            </tr>
+        </tbody>
+    </table>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'925d6d4bba6fb042',t:'MTc0Mjg5NTQxOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
